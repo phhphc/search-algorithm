@@ -4,5 +4,5 @@ from parse import get_matrix
 import search
 
 matrix, bonus_points, start, end = get_matrix('maze_map.txt')
-route = search.DFS(matrix, start, end)
+route = search.GBFS(matrix, start, end)
 visualize_maze(matrix, bonus_points, start, end, route)

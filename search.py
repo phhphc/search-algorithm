@@ -77,8 +77,6 @@ def GBFS(matrix, start, end): # greedy best first search
             if matrix[i][j] != 'x':
                 h[i][j] = heuristic(i, j)
     previous[start[0]][start[1]] = 0
-    print(previous)
-    print(h)
 
     queue = [start]
 
