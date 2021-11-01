@@ -8,6 +8,11 @@ def visualize_maze(matrix, bonus, start, end, route=None):
       3. start, end: The starting and ending points,
       4. route: The route from the starting point to the ending one, defined by an array of (x, y), e.g. route = [(1, 2), (1, 3), (1, 4)]
     """
+
+    #0. Print dimension
+    print(f'The height of the matrix: {len(matrix)}')
+    print(f'The width of the matrix: {len(matrix[0])}')
+
     #1. Define walls and array of direction based on the route
     walls=[(i,j) for i in range(len(matrix)) for j in range(len(matrix[0])) if matrix[i][j]=='x']
 
