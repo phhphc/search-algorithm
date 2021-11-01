@@ -1,15 +1,4 @@
 def BFS(matrix, start, end):
-<<<<<<< HEAD
-    height = len(matrix)
-    width = len(matrix[0])
-
-    previous = [[' ']*width for i in range(height)]
-    previous[start[0]][start[1]] = 0
-    print(previous)
-
-    queue = [start]
-    print(queue)
-=======
 
     previous = [[None]*len(matrix[0]) for i in range(len(matrix))]
     previous[start[0]][start[1]] = 0
@@ -72,6 +61,5 @@ def DFS(matrix, start, end):
         return route
     
              
->>>>>>> bfs
 
      
