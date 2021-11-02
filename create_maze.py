@@ -40,6 +40,18 @@ xxxxxxx x      xx  x x
 xxxxxxxxx  x x  x    x
 x          x x Sx x  x
 xxxxx x  x x x    x  x
+xxxxxxxxxxxxxxxxxxxx x''',
+'''0
+xxxxxxxxxxxxxxxxxxxxxx
+x   x   xx xx        x
+x     x     xxxxxxxxxx
+x x    xx  xxxx xxx xx
+x x   x x xx   xxxx  x
+x          xx  xx  x x
+xxxxxxx x      xx  x x
+xxxxxxxxx  x x  x    x
+x          x x Sx x  x
+xxxxx x  x x x    x  x
 xxxxxxxxxxxxxxxxxxxx x'''
 ]
 

@@ -137,12 +137,15 @@ def AStar(matrix, start, end, bonus_points): # A*
     def distance(p1, p2):
         return abs(p1[0] - p2[0]) + abs(p1[1] - p2[1])
 
+    # heuristic precompute
+
+    bonus_points_distance = [(x, y, p, distance((x, y), end)) for (x, y, p) in bonus_points]
+
     def heuristic(x, y):
         c = distance((x, y), end)
-        for (px, py, p) in bonus_points:
-            bonus = distance((x, y), (px, py)) + p
-            if bonus < 0:
-                c += bonus
+        for (px, py, p, d) in bonus_points_distance: # d is distance bonus point to end
+            if distance((x, y), (px, py)) + p < 0:
+                c += (1 - distance((x, y), (py, py))/d)*p
         return c
 
     previous = [[None]*width for i in range(height)]
@@ -158,7 +161,12 @@ def AStar(matrix, start, end, bonus_points): # A*
     queue = [start]
 
     def f(x,y): # estimated cost of the cheapest solution
-        return h[x][y] + g[x][y]
+        b = 0
+        if previous[x][y]:
+            for (px, py, p) in bonus_points:
+                if (x, y) == (px, py) or (px, py) in previous[x][y]:
+                    b += p
+        return h[x][y] + g[x][y] + b
 
     def dequeue(queue):
         n = 0
@@ -180,7 +188,9 @@ def AStar(matrix, start, end, bonus_points): # A*
                 else:
                     previous[x][y] = previous[prev[0]][prev[1]] + [prev]
 
-            elif f(x, y) < f(prev[0], prev[1]):
+            elif f(x, y) > f(prev[0], prev[1]): # bug here
+                if (x, y) not in queue:
+                    queue.append((x, y))
                 previous[x][y] = previous[prev[0]][prev[1]] + [prev]
                 g[x][y] = g[ prev[0] ][ prev[1] ] + 1
 
