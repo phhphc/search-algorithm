@@ -6,7 +6,6 @@ def BFS(matrix, start, end):
     height, width = len(matrix), len(matrix[0])
 
     previous = [[None]*width for i in range(height)]
-    previous[start[0]][start[1]] = 0
 
     queue = [start]
 
@@ -27,7 +26,7 @@ def BFS(matrix, start, end):
     else:
         (x, y) = end
         route = []
-        while previous[x][y] != 0:
+        while (x, y) != start:
             route.insert(0, (x,y))
             (x,y) = previous[x][y]
         route.insert(0, start)
@@ -45,7 +44,6 @@ def DFS(matrix, start, end):
     height, width = len(matrix), len(matrix[0])
 
     previous = [[None]*width for i in range(height)]
-    previous[start[0]][start[1]] = 0
 
     stack = [start]
 
@@ -66,7 +64,7 @@ def DFS(matrix, start, end):
     else:
         (x, y) = end
         route = []
-        while previous[x][y] != 0:
+        while (x, y) != start:
             route.insert(0, (x,y))
             (x,y) = previous[x][y]
         route.insert(0, start)
@@ -92,7 +90,6 @@ def GBFS(matrix, start, end): # greedy best first search
         for j in range(width):
             if matrix[i][j] != 'x':
                 h[i][j] = heuristic(i, j)
-    previous[start[0]][start[1]] = 0
 
     queue = [start]
 
@@ -120,7 +117,7 @@ def GBFS(matrix, start, end): # greedy best first search
     else:
         (x, y) = end
         route = []
-        while previous[x][y] != 0:
+        while (x, y) != start:
             route.insert(0, (x,y))
             (x,y) = previous[x][y]
         route.insert(0, start)
@@ -156,7 +153,7 @@ def AStar(matrix, start, end, bonus_points): # A*
             if matrix[i][j] != 'x':
                 h[i][j] = heuristic(i, j)
         
-    previous[start[0]][start[1]] = g[start[0]][start[1]] = 0
+    g[start[0]][start[1]] = 0 
 
     queue = [start]
 
@@ -174,12 +171,17 @@ def AStar(matrix, start, end, bonus_points): # A*
         if matrix[x][y] != 'x':
 
             if previous[x][y] == None:
+
                 queue.append((x,y))
-                previous[x][y] = prev
                 g[x][y] = g[ prev[0] ][ prev[1] ] + 1
 
-            elif f(x, y) < f(prev[0], prev[1]) and (x, y) in queue: # prevent overwrite closed point
-                previous[x][y] = prev
+                if prev == start:
+                    previous[x][y] = [prev]
+                else:
+                    previous[x][y] = previous[prev[0]][prev[1]] + [prev]
+
+            elif f(x, y) < f(prev[0], prev[1]):
+                previous[x][y] = previous[prev[0]][prev[1]] + [prev]
                 g[x][y] = g[ prev[0] ][ prev[1] ] + 1
 
     while len(queue) != 0:
@@ -191,17 +193,14 @@ def AStar(matrix, start, end, bonus_points): # A*
         move(x - 1,y,(x,y))
         move(x, y + 1,(x,y))
         move(x, y - 1, (x,y))
+    
 
     if previous[end[0]][end[1]] == None:
         return None, None
     else:
         (x, y) = end
-        route = []
-        while (x, y) != start:
-            route.insert(0, (x,y))
-            (x,y) = previous[x][y]
-        route.insert(0, start)
-    
+        route = previous[x][y] + [end]
+
         browse = []
         for x in range(height):
             for y in range(width):
