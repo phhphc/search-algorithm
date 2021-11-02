@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 
-def visualize_maze(matrix, bonus, start, end, route=None, browse=None):
+def visualize_maze(matrix, bonus, start, end, route=None):
     """
     Args:
       1. matrix: The matrix read from the input file,
@@ -35,10 +35,6 @@ def visualize_maze(matrix, bonus, start, end, route=None, browse=None):
 
     for i in ['top','bottom','right','left']:
         ax.spines[i].set_visible(False)
-    
-    if browse:
-        for (x,y) in browse:
-            plt.scatter(y, -x, marker='s',s=100, color='silver')
 
     plt.scatter([i[1] for i in walls],[-i[0] for i in walls],
                 marker='X',s=100,color='black')
@@ -52,7 +48,7 @@ def visualize_maze(matrix, bonus, start, end, route=None, browse=None):
     if route:
         for i in range(len(route)-2):
             plt.scatter(route[i+1][1],-route[i+1][0],
-                        marker=direction[i],color='blue')
+                        marker=direction[i],color='silver')
 
     plt.text(end[1],-end[0],'EXIT',color='red',
          horizontalalignment='center',
