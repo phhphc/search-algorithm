@@ -161,7 +161,7 @@ def AStar(matrix, start, end, bonus_points): # A*
     queue = [start]
 
     def f(x,y): # estimated cost of the cheapest solution
-        b = 0
+        b = 0 # error when eat bonus point
         if previous[x][y]:
             for (px, py, p) in bonus_points:
                 if (x, y) == (px, py) or (px, py) in previous[x][y]:
