@@ -133,12 +133,20 @@ def GBFS(matrix, start, end): # greedy best first search
 
         return route, browse
              
-def AStar(matrix, start, end): # A*
+def AStar(matrix, start, end, bonus_points): # A*
 
     height, width = len(matrix), len(matrix[0])
 
+    def distance(p1, p2):
+        return abs(p1[0] - p2[0]) + abs(p1[1] - p2[1])
+
     def heuristic(x, y):
-        return abs(x - end[0]) + abs(y - end[1])
+        c = distance((x, y), end)
+        for (px, py, p) in bonus_points:
+            bonus = distance((x, y), (px, py)) + p
+            if bonus < 0:
+                c += bonus
+        return c
 
     previous = [[None]*width for i in range(height)]
     h = [[None]*width for i in range(height)]
@@ -147,6 +155,7 @@ def AStar(matrix, start, end): # A*
         for j in range(width):
             if matrix[i][j] != 'x':
                 h[i][j] = heuristic(i, j)
+        
     previous[start[0]][start[1]] = g[start[0]][start[1]] = 0
 
     queue = [start]
@@ -169,7 +178,7 @@ def AStar(matrix, start, end): # A*
                 previous[x][y] = prev
                 g[x][y] = g[ prev[0] ][ prev[1] ] + 1
 
-            elif f(x, y) < f(prev[0], prev[1]) and (x, y) in queue:
+            elif f(x, y) < f(prev[0], prev[1]) and (x, y) in queue: # prevent overwrite closed point
                 previous[x][y] = prev
                 g[x][y] = g[ prev[0] ][ prev[1] ] + 1
 
