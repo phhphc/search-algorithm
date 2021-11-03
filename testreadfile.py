@@ -1,76 +1,105 @@
-from collections import defaultdict
+def AStar(matrix, start, end, bonus_points): # A*
 
-f=open("test.txt");
-a=f.readline();
-line=[];
-line.append(a);
-k=0;
-while (a!=""):
-    a=f.readline();
-    line.append(a);
-for i in line:
-    print(i);
+    height, width = len(matrix), len(matrix[0])
+
+    def distance(p1, p2):
+        return abs(p1[0] - p2[0]) + abs(p1[1] - p2[1])
+
+    def allBonusPoint(): #tang suc hap dan cho bp
+        (x,y,z)=(0,0,0);
+        max=9999;
+        dis=bonus_points[0]
+        for (px,py,p) in bonus_points:
+            if distance((px,py),start)<max: 
+                max=distance((px,py),start)
+                (x,y)=(px,py) #lay khoang cach cua tu gan start nhat #vi sao a? toi khong biet
+            z=z+p-distance((px,py),dis)
+        return (x,y,z)
+
+    def heuristic(x, y): # this heuristic is not good
+        c = distance((x, y), end)
         
-#for i in line:
-#    for j in enumerate(i):
-#        print(line.index(i), j);
+        if (x, y) != end: # if agent dont eat bonus point, no bonus point will be added
+            #for (px, py, p) in bonus_points: 
+            (px,py,p)=allBonusPoint()
+            b = distance((x, y), (px, py)) + p +distance((px,py),end)
+            if b < 0: 
+                c += b
 
-"""class point:
-    def __init__(self,i,j, data):
-        self.i=i;
-        self.j=j;
-        self.data=data;
-    def printPoint(self):
-        print(self.i,",",self.j,":",self.data);"""
+        return c
 
 
-"""for i in listP:
-    if(i.data=="s"): i.printPoint();
-    if(i.data=="e"): i.printPoint();"""
+    previous = [[None]*width for i in range(height)]
+    h = [[None]*width for i in range(height)]
+    g = [[None]*width for i in range(height)]
+    for i in range(height):
+        for j in range(width):
+            if matrix[i][j] != 'x':
+                h[i][j] = heuristic(i, j)
+        
+    g[start[0]][start[1]] = 0 
 
-for x,i in enumerate(line):
-    for y, j in enumerate(i):
-        if(j=="s"): print(x,y,j);
-        if(j=="e"): print(x,y,j);
+    queue = [start]
 
-class graph:
-    def __init__(self):
-        self._graph = defaultdict(set);
+    def f(x,y, outer = [i], heuristic = True): # estimated cost of the cheapest solution
+        b = 0 # bonux point
+        if previous[x][y]:
+            for (px, py, p) in bonus_points:
+                if (x, y) == (px, py) or (px, py) in previous[x][y] or (px, py) in outer:
+                    b += p
+                    
+        if heuristic:
+            return h[x][y] + g[x][y] + b
+        else:
+            return g[x][y] + b
 
-    def add(self, node1, node2):
-        """ Add connection between node1 and node2 """
+    def dequeue(queue):
+        n = 0
+        for i in range(len(queue)):
+            if f(queue[i][0], queue[i][1]) < f(queue[n][0], queue[n][1]):
+                n = i
+        return queue.pop(n)
 
-        self._graph[node1].add(node2)
-        #if not self._directed:
-         #   self._graph[node2].add(node1);
+    def move(x, y, prev):
+        if matrix[x][y] != 'x':
 
-    def is_connected(self, node1, node2):
-        """ Is node1 directly connected to node2 """
+            if previous[x][y] == None:
 
-        return node1 in self._graph and node2 in self._graph[node1];
+                queue.append((x,y))
+                g[x][y] = g[ prev[0] ][ prev[1] ] + 1
 
-def addtoGraph(line=[], g=graph):
-    for x,i in enumerate(line):
-        for y,j in enumerate(i):
-            #some fvcking dumb code that show that i so fvcking suck at python
-            if(j==" " or j=="s" or j=="e"):
-                if (line[x][y+1] is not None): 
-                    if(line[x][y+1]==" " or line[x][y+1]=="s" or line[x][y+1]=="e"): g.add(line[x][y],line[x][y+1]);
-                if(line[x][y-1] is not None):
-                   if(line[x][y-1]==" " or line[x][y-1]=="s" or line[x][y-1]=="e"): g.add(line[x][y],line[x][y-1]);
-                if(line[x+1][y+1] is not None):
-                   if(line[x+1][y+1]==" " or line[x+1][y+1]=="s" or line[x+1][y+1]=="e"): g.add(line[x][y],line[x+1][y+1]);
-                if(line[x-1][y+1] is not None):
-                   if(line[x-1][y+1]==" " or line[x-1][y+1]=="s" or line[x-1][y+1]=="e"): g.add(line[x][y],line[x-1][y+1]);
-                if(line[x+1][y-1] is not None):
-                   if(line[x+1][y-1]==" " or line[x+1][y-1]=="s" or line[x+1][y-1]=="e"): g.add(line[x][y],line[x+1][y-1]);
-                if(line[x-1][y-1] is not None):
-                   if(line[x-1][y-1]==" " or line[x-1][y-1]=="s" or line[x-1][y-1]=="e"): g.add(line[x][y],line[x-1][y-1]);
-                if(line[x+1][y] is not None):
-                   if(line[x+1][y]==" " or line[x+1][y]=="s" or line[x+1][y]=="e"): g.add(line[x][y],line[x+1][y]);
-                if(line[x-1][y] is not None):
-                   if(line[x-1][y]==" " or line[x-1][y]=="s" or line[x-1][y]=="e"): g.add(line[x][y],line[x-1][y]);
+                if prev == start:
+                    previous[x][y] = [prev]
+                else:
+                    previous[x][y] = previous[prev[0]][prev[1]] + [prev]
 
-#g=graph();
-#addtoGraph(line, g);
-#print(g.is_connected(line[2][0],line[2][1]));
+            elif f(x, y, heuristic=False) > f(prev[0], prev[1], [(x, y)], heuristic=False):
+                if (x, y) not in queue:
+                    queue.append((x, y))
+                previous[x][y] = previous[prev[0]][prev[1]] + [prev]
+                g[x][y] = g[ prev[0] ][ prev[1] ] + 1
+
+    while len(queue) != 0:
+        (x, y) = dequeue(queue)
+        if (x,y) == end: 
+            break
+
+        move(x + 1,y,(x,y))
+        move(x - 1,y,(x,y))
+        move(x, y + 1,(x,y))
+        move(x, y - 1, (x,y))
+    
+
+    if previous[end[0]][end[1]] == None:
+        return None, None
+    else:
+        (x, y) = end
+        route = previous[x][y] + [end]
+
+        browse = []
+        for x in range(height):
+            for y in range(width):
+                if previous[x][y] != None and (x,y) not in route:
+                    browse.append((x,y))
+
+        return route, browse
