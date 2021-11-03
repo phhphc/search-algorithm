@@ -141,7 +141,7 @@ def AStar(matrix, start, end, bonus_points): # A*
 
     bonus_points_distance = [(x, y, p, distance((x, y), end)) for (x, y, p) in bonus_points]
 
-    def heuristic(x, y):
+    def heuristic(x, y): # this heuristic is not good
         c = distance((x, y), end)
         for (px, py, p, d) in bonus_points_distance: # d is distance bonus point to end
             if distance((x, y), (px, py)) + p < 0:
@@ -188,7 +188,7 @@ def AStar(matrix, start, end, bonus_points): # A*
                 else:
                     previous[x][y] = previous[prev[0]][prev[1]] + [prev]
 
-            elif f(x, y) > f(prev[0], prev[1], [(x, y)]): # # may be error
+            elif f(x, y) > f(prev[0], prev[1], [(x, y)]):
                 if (x, y) not in queue:
                     queue.append((x, y))
                 previous[x][y] = previous[prev[0]][prev[1]] + [prev]
