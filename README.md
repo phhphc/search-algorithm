@@ -1,22 +1,5 @@
 # Please don't bug
-                       _oo0oo_
-                      o8888888o
-                      88" . "88
-                      (| -_- |)
-                      0\  =  /0
-                    ___/`---'\___
-                  .' \|     |// '.
-                 / \|||  :  |||// \
-                / _||||| -:- |||||- \
-               |   | \\  -  /// |   |
-               | \_|  ''\---/''  |_/ |
-               \  .-\__  '-'  ___/-. /
-             ___'. .'  /--.--\  `. .'___
-          ."" '<  `.___\_<|>_/___.' >' "".
-         | | :  `- \`.;`\ _ /`;.`/ - ` : | |
-         \  \ `_.   \_ __\ /__ _/   .-` /  /
-     =====`-.____`.___ \_____/___.-`___.-'=====
-                       `=---='
+thank for thank for buddhist the code didn't gone into any critical error 
                        
 # search-algorithm
 search algorithm with DFS, BFS,  Greedy Best First Search, A*
