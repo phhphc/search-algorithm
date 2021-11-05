@@ -137,14 +137,26 @@ def AStar(matrix, start, end, bonus_points): # A*
     def distance(p1, p2):
         return abs(p1[0] - p2[0]) + abs(p1[1] - p2[1])
 
+    def allBonusPoint(): #tang suc hap dan cho bp
+        (x,y,z)=(0,0,0);
+        max=9999;
+        dis=bonus_points[0]
+        for (px,py,p) in bonus_points:
+            if distance((px,py),start)<max: 
+                max=distance((px,py),start)
+                (x,y)=(px,py) #lay khoang cach cua tu gan start nhat #vi sao a? toi khong biet
+            z=z+p-distance((px,py),dis)
+        return (x,y,z)
+
     def heuristic(x, y): # this heuristic is not good
         c = distance((x, y), end)
         
         if (x, y) != end: # if agent dont eat bonus point, no bonus point will be added
-            for (px, py, p) in bonus_points: 
-                b = distance((x, y), (px, py)) + p
-                if b < 0: 
-                    c += b
+            #for (px, py, p) in bonus_points: 
+            (px,py,p)=allBonusPoint()
+            b = distance((x, y), (px, py)) + p +distance((px,py),end)
+            if b < 0: 
+                c += b
 
         return c
 
