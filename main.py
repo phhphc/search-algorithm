@@ -1,4 +1,3 @@
-from numpy import e
 from visual import visualize_maze 
 from parse import get_matrix
 import search
