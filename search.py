@@ -141,13 +141,13 @@ def AStar(matrix, start, end, bonus_points): # A*
     bonus_points_heuristic = [point for point in bonus_points] # fail !
     for i in range(len(bonus_points_heuristic)): # point of bonus point will be sum of all bonus point nearby it
         for (x, y, p) in bonus_points:
-            (x1, y1, p1) = bonus_points_heuristic[i]
+            (x1, y1, p1) = bonus_points[i]
             if (x, y) != (x1, y1):
                 d = distance((x, y), (x1, y1))
                 if d < -p1 and d < -p:
-                    bonus_points_heuristic[i] = (x1, y1, p1 + p)
+                    bonus_points_heuristic[i] = (x1, y1, bonus_points_heuristic[i][2] + p) 
 
-    def heuristic(x, y): # this heuristic is not good
+    def heuristic(x, y):  
         c = distance((x, y), end)
         
         if (x, y) != end: # if agent dont eat bonus point, no bonus point will be added
@@ -157,7 +157,6 @@ def AStar(matrix, start, end, bonus_points): # A*
                     c += b
 
         return c
-
 
     previous = [[None]*width for i in range(height)]
     h = [[None]*width for i in range(height)]
@@ -172,7 +171,7 @@ def AStar(matrix, start, end, bonus_points): # A*
     queue = [start]
 
     def f(x,y, outer = [i], heuristic = True): # estimated cost of the cheapest solution
-        b = 0 # bonux point
+        b = 0 # bonus point
         if previous[x][y]:
             for (px, py, p) in bonus_points:
                 if (x, y) == (px, py) or (px, py) in previous[x][y] or (px, py) in outer:
@@ -219,7 +218,6 @@ def AStar(matrix, start, end, bonus_points): # A*
         move(x, y + 1,(x,y))
         move(x, y - 1, (x,y))
     
-
     if previous[end[0]][end[1]] == None:
         return None, None
     else:
