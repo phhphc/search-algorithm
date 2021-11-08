@@ -48,9 +48,13 @@ def DFS(matrix, start, end):
     stack = [start]
 
     def move(x, y, prev): # if move to end return True
-        if matrix[x][y] != 'x' and previous[x][y] == None:
-            stack.append((x,y))
-            previous[x][y] = prev
+        if matrix[x][y] != 'x':
+            print(x, y, stack[-5:])
+            if previous[x][y] == None:
+                stack.append((x,y))
+                previous[x][y] = prev
+            elif (x, y) in stack:
+                previous[x][y] = prev
         return True if end == (x,y) else False
 
     while len(stack) != 0:
