@@ -43,7 +43,7 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx''',
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 x   x   xx                   x   x
 x     x     xxxxxxxxxxxxxxxx     x
-x    ++xxxxxxxx xxx x   x    x   x
+x    ++xxxxxxxx xxx x   x   xx   x
 x    +x x xx   xxxx     x    x   x
 x    x     xx +xx  xxx  x    xxx x
 x   x   x      xx  x   xx  x x x x
