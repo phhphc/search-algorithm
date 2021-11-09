@@ -40,7 +40,7 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx''',
 3 5 -10
 4 5 -10
 5 14 -10
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 x   x   xx                   x   x
 x     x     xxxxxxxxxxxxxxxx     x
 x    ++xxxxxxxx xxx x   x    x   x
