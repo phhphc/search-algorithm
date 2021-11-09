@@ -24,7 +24,7 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 xxxxx                x             x
 xxx   x   x  xxx xx     x x xxx x xx
 x    x+x  x    x xx  xxxx xxxxxxx xx
-x  x   x  x  x x     x             x
+x  x   x  x  x x     x              
 x  xx     xxxx+x     x             x
 x  x  xxx     x x    x             x
 x  x  x  xxxx        x     xxxx    x
@@ -34,7 +34,7 @@ x xxxx xxxxxx xx  x x x xxxx xxxx xx
 x  xxxxxxxx   xxx   xxx xxx   xxxx x
 x  xxxx  xx xxxxx xx xx xxxx xxxxx x
 x           xxxx  xx               x 
-xxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxxx''',
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx''',
 '''4
 3 6 -10
 3 5 -10
