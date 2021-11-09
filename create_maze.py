@@ -191,8 +191,33 @@ xxxxx      x xxx  x  xxx    x  x x
 xxxxx   x         x  x   x  x    x
 xxxxxxxxxxxxxxxx     xx  x  xxxx x
 x+                      xx     x x
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx xxx'''
-
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx xxx''',
+'''10
+1 2 -14
+2 4 -13
+4 4 -15
+11 3 -16
+13 4 -11
+13 7 -12
+12 10 -7
+1 29 -2
+9 32 -13
+12 28 -11
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+x + x   xx xx        xxxxx x +     x
+x   + x     xxx xxxxxxxxx    xxxxxxx
+x x    xx  xxxx xxx xxxx   xxx xxxxx
+x x + x x xx   xxxx     xx   x x     
+x          xx  xx  x xxxxx  xx x xxx
+xxxxxxx x      xx  x xxxxxx xx x xxx
+xxxxxxxxx  x x  xx      xx  x    xxx
+x          x x Sx    x xxx  x xx xxx
+xxxxx x  x x x     x x        xx+xxx
+xxx   x         xx x    xxxx xxx xxx
+xxx+x   xxxxxxx    x  xxxxxx xxxxxxx
+x         +xxxx xx   xxxx   +  xxxxx
+xxxx+xx+xxxxxxx xx xxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'''
 ]
 
 print("maze length: %d"%len(maze))
