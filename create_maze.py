@@ -6,12 +6,12 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 x   x   xx xx        xxxxx x       x
 x     x     xxx xxxxxxxxx    xxxxxxx
 x x   +xx  xxxx xxx xxxx   xxx xxxxx
-  x   x x xx   xxxx     xx   x x    
+  x   x x xx   xxxx     xx   x x   x
 x          xx +xx  x xxxxx  xx x xxx
 xxxxxxx x      xx  x xxxxxx xx x xxx
 xxxxxxxxx  x x  xx      xx  x    xxx
-x          x x Sx    x xxx  x xx xxx
-xxxxx x  x x x     x x        xx xxx
+x          x x  x    x xxx  x xx xxx
+xxxxx x  x x x     x x   S    xx xxx
 xxxxx x         xx x    xxxx xxx xxx
 xxxxx   xxxxxxx    x  xxxxxx xxxxxxx
 x      xxxxxxxx xx   xxxxxx  xxxxxxx
@@ -23,37 +23,37 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx''',
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 xxxxx                x             x
 xxx   x   x  xxx xx     x x xxx x xx
-x    x+x  x    x xx  xxxx xxxxxxx xx
+x    x+x  x    x xx  xxxxxxxxxxxxxxx
 x  x   x  x  x x     x             x
 x  xx     xxxx+x     x             x
-x  x  xxx     x x    x             x
-x  x  x  xxxx        x     xxxx    x
-xxx    x  x  x xSx  x x    x  x    x
-xxx              xx   x    x  x    x
+x  x  x x     x x             S     
+x  x  x  xx x        x     xxxx    x
+xxx    x  x  x x x  x x    x  x    x
+xxx              xx        x  x    x
 x xxxx xxxxxx xx  x x x xxxx xxxx xx
-x  xxxxxxxx   xxx   xxx xxx   xxxx x
-x  xxxx  xx xxxxx xx xx xxxx xxxxx x
-x           xxxx  xx               x 
-xxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxxx''',
+x  xxx xxxx   xxx   xxx xxx   xxxx x
+x  xxx   xx xxxxx xx xx xxxx xxxxx x
+x                                  x
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx''',
 '''4
 3 6 -10
 3 5 -10
 4 5 -10
 5 14 -10
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-x   x   xx xx                    x
-x     x     xxxxxxxxx   x        x
-x x  ++xx  xxxx xxx x   x    x   x
-x x  +x x xx   xxxx     x    x   x
-x          xx +xx  xxx  x    xxxxx
-xxxxxxx x      xx  x   xx  x x xxx
-xxxxxxxxx  x x  x       x  x    xx
-x          x x Sx xxxxxxx  x  xxxx
-xxxxx x  x x x    x            x x
-xxxxx      x xxx  x  xxx    x  x x
-xxxxx   x         x  x   x  x    x
-xxxxxxxxxxxxxxxx     xx  x  xxxx x
-x                       xx     x x
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+x   x   xx                   x   x
+x     x     xxxxxxxxxxxxxxxx     x
+x    ++xxxxxxxx xxx x   x    x   x
+x    +x x xx   xxxx     x    x   x
+x    x     xx +xx  xxx  x    xxx x
+x   x   x      xx  x   xx  x x x x
+x  xxxx                        x x
+x x                        S   x x
+x xxx x  x x x    x            x x
+x x        x xxx  x  xxx    x  x x
+x x x   x         x  x   x  x  x x
+x x xxxxxxxxxxxxxx xxxx  xxxxxxx x
+x     x                 xx       x
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx xxx''',
 '''2
 3 6 -7
